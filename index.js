@@ -9,11 +9,16 @@ app.get("/", (req, res) => {
   res.send("Welcome to the eden application");
 });
 
-app.get("/User_information", (req, res) => {
-  pool.query("select * from User_credentials", (rows) => {
-    // if (err) throw new error(err);
+// app.get("/user", (req, res) => {
+//   pool.query("select * from User_credentials", (rows) => {
+//     // if (err) throw new error(err);
+//     return res.json(rows);
+//   });
+// });
+app.get("/user", (req, res) => {
+  pool.query("select * from User_credentials", (err, rows) => {
+    // if (err) throw new Error(err);
     return res.json(rows);
   });
 });
-
 app.listen(PORT, console.log("I am listening on port 5000"));
