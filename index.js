@@ -36,5 +36,6 @@ app.get("/user/:id", (req, res) => {
       }
     );
   });
+  // You stopped at the 2:19 mark on video recording 1/14/2021
 });
 app.listen(PORT, console.log("I am listening on port 5000"));
