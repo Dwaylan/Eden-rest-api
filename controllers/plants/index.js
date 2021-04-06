@@ -3,7 +3,7 @@ const mysql = require("mysql");
 const pool = require("../../sql/connection");
 
 const list = (req, res) => {
-  pool.query(`SELECT * FROM User_credentials`, (err, rows) => {
+  pool.query(`SELECT * FROM State_plants`, (err, rows) => {
     if (err) {
       throw new Error(err);
     }
@@ -14,7 +14,7 @@ const list = (req, res) => {
 const show = (req, res) => {
   const id = req.params.id;
 
-  pool.query(`SELECT * FROM User_credentials WHERE id = ${id}`, (err, rows) => {
+  pool.query(`SELECT * FROM State_plants WHERE id = ${id}`, (err, rows) => {
     if (err) {
       throw new Error(err);
     }
@@ -23,10 +23,10 @@ const show = (req, res) => {
 };
 
 const create = (req, res) => {
-  const User_credentials = req.body;
+  const State_plants = req.body;
 
   pool.query(
-    `INSERT INTO User_credentials (User_Name, User_Password, User_Email) VALUES ("${User_credentials.User_Name}","${User_credentials.User_Password}", "${User_credentials.User_Email}")`,
+    `INSERT INTO State_plants (Insert into State_plants (Common_name, Scientific_name, State, State_Abbreviation, Toxicity, Image) values) VALUES ("${State_plants.Common_name}","${State_plants.Scientific_name}", "${State_plants.State}","${State_plants.State_Abbreviation}"), "${State_plants.toxicity},"${State_plants.image}""`,
     (err, rows) => {
       if (err) {
         throw new Error(err);
@@ -38,7 +38,7 @@ const create = (req, res) => {
 
 const update = (req, res) => {
   let sql = `UPDATE ?? SET ? WHERE ?? = ? `;
-  sql = mysql.format(sql, ["User_credentials", req.body, "id", req.params.id]);
+  sql = mysql.format(sql, ["State_plants", req.body, "id", req.params.id]);
   pool.query(sql, (err, results) => {
     if (err) {
       throw new Error(err);
@@ -49,7 +49,7 @@ const update = (req, res) => {
 
 const remove = (req, res) => {
   let sql = `DELETE FROM ?? WHERE ?? = ? `;
-  sql = mysql.format(sql, ["User_credentials", "id", req.params.id]);
+  sql = mysql.format(sql, ["State_plants", "id", req.params.id]);
   pool.query(sql, (err, results) => {
     if (err) {
       throw new Error(err);
