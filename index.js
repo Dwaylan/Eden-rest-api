@@ -1,21 +1,33 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const plants = require("./routers/plants");
+const mysql = require("mysql");
+const pool = require("./sql/connection");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(plants);
 
-app.use((req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
-    return res.status(200).json({});
-  }
-});
+//The code below DID NOT WORK
+//  app.use(cors({
+//  origin: '*',
+//  methods: ['GET'],
+//  allowedHeaders: '*'
+//}))
+
+// The code below DID NOT WORK
+// app.use((req, res) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "*");
+//   if (req.method === "OPTIONS") {
+//     res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+//     return res.status(200).json({});
+//   }
+// });
 
 app.get("/", (req, res) => {
   res.send("Welcome to the eden application");
