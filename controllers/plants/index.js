@@ -6,7 +6,7 @@ const list = (req, res) => {
     if (err) {
       throw new Error(err);
     }
-    return res.json(rows, { msg: "This is CORS-enabled for a single route" });
+    return res.json(rows);
   });
 };
 
@@ -17,7 +17,7 @@ const show = (req, res) => {
     if (err) {
       throw new Error(err);
     }
-    return res.json(rows, { msg: "This is CORS-enabled for a single route" });
+    return res.json(rows);
   });
 };
 

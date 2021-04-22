@@ -1,12 +1,19 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const plants = require("./routers/plants");
-const cors = require("cors");
+// const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use((req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+    return res.status(200).json({});
+  }
+});
 app.use(bodyParser.json());
 app.use(plants);
 
