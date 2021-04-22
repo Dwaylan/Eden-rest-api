@@ -1,4 +1,3 @@
-// const express = require("express");
 const mysql = require("mysql");
 const pool = require("../../sql/connection");
 
@@ -7,7 +6,7 @@ const list = (req, res) => {
     if (err) {
       throw new Error(err);
     }
-    return res.json(rows);
+    return res.json(rows, { msg: "This is CORS-enabled for a single route" });
   });
 };
 
@@ -18,7 +17,7 @@ const show = (req, res) => {
     if (err) {
       throw new Error(err);
     }
-    return res.json(rows);
+    return res.json(rows, { msg: "This is CORS-enabled for a single route" });
   });
 };
 
