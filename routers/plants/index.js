@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const cors = require("cors");
 const {
   create,
   update,
@@ -9,9 +8,9 @@ const {
   list,
 } = require("../../controllers/plants");
 
-router.get("/plants", list, cors());
+router.get("/plants", list);
 
-router.get("/plants/:id", show, cors());
+router.get("/plants/:id", show);
 
 router.post("/plants", create);
 

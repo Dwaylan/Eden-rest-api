@@ -1,10 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const plants = require("./routers/plants");
-// const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.use(bodyParser.json());
+app.use(plants);
 
 app.use((req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -14,8 +16,6 @@ app.use((req, res) => {
     return res.status(200).json({});
   }
 });
-app.use(bodyParser.json());
-app.use(plants);
 
 app.get("/", (req, res) => {
   res.send("Welcome to the eden application");
