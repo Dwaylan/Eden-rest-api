@@ -11,7 +11,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", true);
   res.header("Content-Type", "application/json");
-  res.header("Content-Type", "image/jpeg");
+  res.header("Content-Type", "image/jpeg, image/jpg, image/png");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, authorization"
