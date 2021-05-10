@@ -7,6 +7,8 @@ const pool = require("./sql/connection");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// The code below works but it may be a bit verbose
 // app.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
 //   res.header("Access-Control-Allow-Credentials", true);
@@ -18,10 +20,10 @@ const PORT = process.env.PORT || 5000;
 //   res.header("Access-Control-Allow-Methods", "*");
 //   next();
 // });
-// app.use(cors());
+app.use(cors());
 app.use(bodyParser.json());
 app.use(plants);
-// app.options("*", cors());
+app.options("*", cors());
 
 app.get("/", (req, res) => {
   res.send("Welcome to the eden application");
